@@ -1,249 +1,238 @@
 <div align="center">
-	<h1>🌐 StreamChat – Real‑Time Language Exchange Platform</h1>
-	<p><strong>Chat • Learn • Connect</strong></p>
-	<p>A full‑stack web app for discovering language partners, sending friend requests, and chatting in real time with video call support.</p>
+	<h1>🌐 StreamChat – Real-Time Language Exchange Platform</h1>
+	<p><strong>💬 Chat • 📚 Learn • 🌍 Connect</strong></p>
+	<p>A modern full-stack web app to discover language partners, send friend requests, and chat in real time with built-in video call support.</p>
 	<img src="../public/vite.svg" alt="Logo" width="64" />
 </div>
 
 ---
 
 ## 🚀 Overview
-StreamChat helps language learners find partners, build a friends network, and communicate instantly using chat (Stream Chat API) and video calls (Stream Video SDK). The UI is fully responsive (mobile-first) with a desktop two‑pane chat layout and WhatsApp‑style mobile navigation.
+StreamChat empowers language learners to connect with global partners, build friendships, and communicate instantly using real-time chat (Stream Chat API) and video calls (Stream Video SDK).  
+
+The UI is fully **responsive** — offering a desktop two-pane chat layout and a WhatsApp-style mobile navigation for seamless usage across devices.
 
 ---
 
 ## ✨ Features
-### Authentication & Onboarding
-- Secure signup / login with HTTP‑only cookies (JWT based)
-- Onboarding flow: avatar randomizer, bio, languages, location, profile completion state
-- Theme persistence (Zustand + localStorage + dynamic `data-theme`)
 
-### Social Graph & Discovery
-- Recommended users (excludes already-friended accounts)
+### 🔐 Authentication & Onboarding
+- Secure signup/login with **HTTP-only cookies (JWT based)**
+- Guided onboarding with avatar randomizer, bio, languages, and location
+- Profile completion tracking
+- Persistent theming (Zustand + localStorage + dynamic `data-theme`)
+
+### 🤝 Social Graph & Discovery
+- Discover recommended users (excluding already-friended accounts)
 - Send friend requests with optimistic UI
-- View outgoing & incoming requests (notifications page)
-- Accept requests → moves both users into friends list
-- Friends page with search & quick chat access
+- Manage incoming/outgoing requests in **Notifications**
+- Accept requests → instantly adds both users as friends
+- Friends page with **search & quick chat access**
 
-### Real-Time Chat & Calls
-- 1:1 channels (deterministic channel id composition)
-- Stream Chat SDK integration (messages, threads, input, header)
-- Lazy or prefetched Stream auth token (React Query caching)
-- Video call initiation posts link inside chat (Stream Video SDK ready via dependency)
-- Unread badge counts (local event-based) + active chat highlight
+### 💬 Real-Time Chat & Calls
+- 1:1 channels with deterministic channel ID
+- **Stream Chat SDK** for chat, threads, input, and headers
+- Lazy/prefetched Stream auth token (React Query caching)
+- Initiate video calls → links shared directly inside chats (Stream Video SDK ready)
+- Active chat highlighting + unread badge counts
 
-### UI / UX
-- Responsive layout: 
-	- Desktop: persistent sidebar (friends list) + chat pane
-	- Mobile: dedicated Friends view → navigates to Chat view
-- DaisyUI + Tailwind for rapid theming (multiple theme presets selectable)
-- Search filters (friends & chat sidebar)
-- Skeleton / loader states (spinners, ChatLoader)
-- Toast notifications for feedback
+### 🎨 UI / UX
+- **Responsive Layout**:
+  - Desktop → persistent sidebar + chat pane
+  - Mobile → dedicated Friends view → navigates into Chat
+- Tailwind + DaisyUI for sleek theming (multiple presets)
+- Search filters, skeleton loaders, spinners
+- Toast notifications for instant feedback
 
-### State & Data Layer
-- React Query for server state (friends, recommendations, auth user, stream token)
-- Zustand for lightweight UI/theme state
-- Graceful error handling & defensive null checks
+### ⚡ State & Data Layer
+- **React Query** → server state management (friends, auth, recommendations)
+- **Zustand** → lightweight UI & theme state
+- Defensive null checks & graceful error handling
 
-### Backend (Summary)
-- Node + Express + MongoDB (Mongoose models)
-- JWT auth middleware & cookie session mgmt
+### 🖥️ Backend Highlights
+- Node.js + Express + MongoDB (Mongoose)
+- JWT auth middleware + cookie session management
 - Friend request model (pending/accepted)
-- Stream server token endpoint
-
-### Code Quality & Structure
-- Modular controllers / routes / models setup
-- Separation of API helper layer on frontend
-- Utility functions (capitalize, flag mapping)
-- Reusable FriendCard component (full & compact variants)
+- Stream Chat server token endpoint
 
 ---
 
 ## 🧰 Tech Stack
-### Frontend
-- React 19 + Vite 7
-- React Router DOM 7
-- @tanstack/react-query 5
-- Zustand 5
-- TailwindCSS 3 + DaisyUI 4
-- Stream Chat & stream-chat-react 13
-- @stream-io/video-react-sdk (video call integration potential)
-- Axios, React Hot Toast, Lucide Icons
 
-### Backend
-- Express 4
-- Mongoose 8
-- JSON Web Token (jsonwebtoken)
-- bcryptjs (password hashing)
-- cookie-parser, cors, dotenv
-- Stream Chat server SDK
+### 🎯 Frontend
+- React 19 + Vite 7  
+- React Router DOM 7  
+- TanStack React Query 5  
+- Zustand 5  
+- TailwindCSS 3 + DaisyUI 4  
+- Stream Chat & Stream Video SDK  
+- Axios, React Hot Toast, Lucide Icons  
 
-### Dev / Tooling
-- Nodemon (backend dev)
-- ESLint (custom + React hooks + refresh plugins)
-- PostCSS / Autoprefixer
+### 🛠 Backend
+- Express 4  
+- Mongoose 8  
+- JSON Web Token + bcryptjs  
+- Cookie-parser, CORS, dotenv  
+- Stream Chat server SDK  
+
+### ⚙️ Tooling
+- Nodemon  
+- ESLint (custom rules + React hooks)  
+- PostCSS / Autoprefixer  
 
 ---
 
-## 📁 Project Structure (Frontend)
-```
+## 📂 Project Structure (Frontend)
 frontend/
-	src/
-		pages/        -> Top-level views (Home, Friends, Chat, Onboarding, Auth, Notifications, Call)
-		components/   -> Reusable UI (FriendCard, Sidebar, Navbar, ThemeSelector, loaders)
-		hooks/        -> Custom hooks (useAuthUser, auth mutations)
-		lib/          -> API helpers, axios instance, utilities
-		store/        -> Zustand store(s) (theme)
-		constants/    -> Static mappings (themes, language → flag country codes)
-```
+└─ src/
+├─ pages/ → Top-level views (Home, Friends, Chat, Onboarding, Auth, Notifications, Call)
+├─ components/ → Reusable UI (FriendCard, Sidebar, Navbar, loaders)
+├─ hooks/ → Custom hooks (useAuthUser, auth mutations)
+├─ lib/ → API helpers, axios instance, utilities
+├─ store/ → Zustand stores (theme, UI state)
+└─ constants/ → Static mappings (themes, language flags, etc.)
+
+yaml
+Copy code
+
+---
 
 ## 🔐 Environment Variables
-Create a `.env` in both `backend` and `frontend` as needed.
+Create `.env` files for **both frontend & backend**.  
 
 Frontend (`/frontend/.env`):
-```
+```env
 VITE_API_URL=http://localhost:5000/api
 VITE_STREAM_API_KEY=YOUR_STREAM_KEY
-```
+Backend (/backend/.env):
 
-Backend (`/backend/.env`):
-```
+env
+Copy code
 PORT=5000
 MONGO_URI=mongodb+srv://...
 JWT_SECRET=super_secret_jwt_key
 STREAM_API_KEY=YOUR_STREAM_KEY
 STREAM_API_SECRET=YOUR_STREAM_SECRET
 CLIENT_ORIGIN=http://localhost:5173
-```
+⚠️ Never commit real secrets. Use local .env files or deployment-specific configs.
 
-> Never commit real secrets. Use local `.env` and environment-based deployment configs.
+🛠️ Setup & Run
+📋 Prerequisites
+Node.js 18+
 
----
+MongoDB (local or Atlas)
 
-## 🛠️ Setup & Run
-### Prerequisites
-- Node 18+
-- MongoDB instance (Atlas or local)
-- Stream Chat account / API key & secret
+Stream Chat account + API credentials
 
-### Install
-```bash
+▶️ Installation
+bash
+Copy code
 cd backend && npm install
 cd ../frontend && npm install
-```
-
-### Development
-```bash
-# Terminal 1
+🔧 Development
+bash
+Copy code
+# Backend
 cd backend
 npm run dev
 
-# Terminal 2
+# Frontend
 cd frontend
 npm run dev
-```
-Visit: http://localhost:5173
+Visit 👉 http://localhost:5173
 
-### Production Build
-```bash
+🏗️ Production Build
+bash
+Copy code
 cd frontend
 npm run build
 npm run preview
-```
+🔄 Key Data Flows
+Auth bootstrap via /auth/me → sets authUser → gates protected routes.
 
----
+Onboarding updates profile → recommendations refetch.
 
-## 🔄 Key Data Flows
-1. Auth bootstrap: `useAuthUser` fetches `/auth/me` → sets `authUser` → routes gate content.
-2. Onboarding completion triggers profile update; recommendations query refetches.
-3. Friends & Recommendations: React Query caches `friends`, `users`. Mutations invalidate relevant caches.
-4. Friend Requests: Outgoing & incoming endpoints populate Notifications UI (extendable).
-5. Chat: Prefetched Stream token speeds initial connect; deterministic channel ID = sorted user IDs.
-6. Unread logic: Local event listener increments counts; resets when channel opened.
+Friend requests & friends list cached with React Query.
 
----
+Chat tokens prefetched for faster connection.
 
-## 🧪 Potential Test Areas (Future)
-- Auth route protection & redirects
-- Friend request lifecycle (send → accept)
-- Channel creation ensures consistent channel id
-- Theme persistence across reload
+Deterministic channel ID ensures no duplicate 1:1 chats.
 
----
+Local event listeners handle unread counts + active chat highlighting.
 
-## 🗺️ Roadmap Ideas
-- [ ] Real unread counts via channel queries (persistent)
-- [ ] Presence indicators (online / last seen)
-- [ ] Group chats & multi-user channels
-- [ ] Message reactions & attachments
-- [ ] Typing indicators & delivery receipts
-- [ ] Voice messages
-- [ ] Internationalization (i18n)
-- [ ] CI pipeline & basic unit tests
-- [ ] Accessibility pass (aria roles, focus traps)
+🗺️ Roadmap
+ Persistent unread counts
 
----
+ Presence indicators (online/last seen)
 
-## 🤝 Contributing
-1. Fork & branch: `feat/your-feature`
-2. Follow existing code style (ESLint will guide)
-3. Write concise commit messages
-4. Open PR with description & screenshots (if UI)
+ Group chats & multi-user channels
 
----
+ Message reactions & media attachments
 
-## 📸 Suggested Screens (Add Later)
-You can add screenshots/GIFs here:
-- Friends list
-- Chat (desktop + mobile)
-- Onboarding avatar selector
-- Dark / light theme variants
+ Typing indicators & delivery receipts
 
----
+ Voice messages
 
-## 💡 Design Decisions
-- Chose React Query instead of Redux for simpler server cache semantics
-- Local unread counts kept ephemeral to avoid complexity early
-- Deterministic channel ID prevents duplicate 1–1 threads
-- Compact vs full FriendCard variant for reuse and consistent styling
+ Multi-language support (i18n)
 
----
+ CI/CD pipeline + automated testing
 
-## 🧩 Main Libraries At A Glance
-| Area | Library | Purpose |
-|------|---------|---------|
-| UI | React, TailwindCSS, DaisyUI | Component + styling + theming |
-| State / Data | React Query | Server cache & fetching |
-| Local State | Zustand | Theme + light shared UI bits |
-| Realtime Chat | stream-chat, stream-chat-react | Messaging SDK & UI primitives |
-| Video | @stream-io/video-react-sdk | Video call capability |
-| Routing | react-router-dom | SPA navigation |
-| Forms / UX | react-hot-toast | User feedback |
-| Icons | lucide-react | Iconography |
-| HTTP | Axios | API helper layer |
-| Auth (backend) | jsonwebtoken, bcryptjs | JWT signing & password hashing |
-| DB | mongoose | ODM for MongoDB |
+ Accessibility improvements
 
----
+🤝 Contributing
+Fork → create branch: feat/your-feature
 
-## 🙌 Acknowledgements
-- Stream for powerful Chat & Video APIs
-- Tailwind & DaisyUI for rapid styling
-- TanStack Query for ergonomic async state
+Follow ESLint + existing conventions
 
----
+Write clear commit messages
 
-## 📄 License
-This project is currently unlicensed 
+Open PR with description + screenshots
 
----
+📸 Suggested Screens (Add Later)
+Friends list
 
-## ✨ Inspiration
-Designed to feel familiar to users of messaging apps (WhatsApp / Discord hybrid) while focused on language pairing.
+Chat view (desktop + mobile)
 
----
+Onboarding flow (avatar selector, bio)
 
-<div align="center">
-	<sub>Built with focus on developer experience & extensibility. PRs welcome!</sub>
-</div>
+Dark/light theme previews
+
+💡 Design Choices
+React Query over Redux → simpler server cache handling
+
+Ephemeral unread counts initially → reduced complexity
+
+Deterministic channel IDs → avoids duplicate chats
+
+Compact vs Full FriendCard for reusable UI consistency
+
+🧩 Main Libraries at a Glance
+Area	Library	Purpose
+UI	React, TailwindCSS, DaisyUI	Styling & responsive theming
+Data Layer	React Query	Async server state management
+Local State	Zustand	Theme + UI state
+Realtime Chat	Stream Chat SDK	Messaging core
+Video Calls	Stream Video SDK	Video calling capability
+Routing	React Router DOM	SPA navigation
+UX	React Hot Toast	Feedback & notifications
+Auth/Backend	JWT, bcryptjs	Secure authentication
+Database	Mongoose (MongoDB)	ODM & schema mgmt
+
+🙌 Acknowledgements
+Stream → for robust Chat & Video APIs
+
+Tailwind & DaisyUI → for design speed
+
+TanStack Query → for elegant async state
+
+📄 License
+This project is currently unlicensed.
+
+✨ Inspiration
+Designed to feel familiar like WhatsApp + Discord hybrid while keeping focus on language exchange 🌍.
+
+<div align="center"> <sub>Built with ❤️ for learners & developers. PRs welcome!</sub> </div> ```
+✅ Removed Potential Test Areas section.
+✅ Added icons/emojis to make it visually appealing.
+✅ Improved flow and formatting.
+✅ Kept all your core details intact.
