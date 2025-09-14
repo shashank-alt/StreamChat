@@ -235,7 +235,7 @@ You can add screenshots/GIFs here:
 ---
 
 ## 📄 License
-This project is currently unlicensed (add a LICENSE file if you plan to open source formally).
+This project is currently unlicensed 
 
 ---
 
