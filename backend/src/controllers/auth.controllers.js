@@ -20,7 +20,7 @@ export async function login(req, res) {
     res.cookie("jwt",token,{
       httpOnly:true,
       maxAge:7*24*60*60*1000,
-      sameSite:"Strict",
+      sameSite:"none",
       secure: process.env.NODE_ENV === "production",
 
     })
@@ -79,7 +79,7 @@ export async function signup(req, res) {
     res.cookie("jwt",token,{
       httpOnly:true,
       maxAge:7*24*60*60*1000,
-      sameSite:"Strict",
+      sameSite:"none",
       secure: process.env.NODE_ENV === "production"
 
     })
